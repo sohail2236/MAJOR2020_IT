@@ -18,6 +18,7 @@ RUN apt-get install -y libpython3-dev
 #installing mono
 RUN apt-get update
 RUN apt-get install -y gnupg ca-certificates
+RUN apt install curl
 RUN curl https://download.mono-project.com/repo/xamarin.gpg | sudo apt-key add -
 RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 RUN apt-get update
