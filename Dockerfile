@@ -4,7 +4,7 @@ COPY ./* /
 WORKDIR /
 RUN apt-get install -y python3-pip  
 RUN pip3 install -r requirements.txt
-RUN nohup bash -c "python3 tornado_server.py" && sleep 4
+RUN nohup bash -c "python3 tornado_server.py" & sleep 7
 
 RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
     mkdir -p /var/lib/shiny-server/bookmarks/shiny
