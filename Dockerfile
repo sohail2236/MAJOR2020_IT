@@ -3,7 +3,7 @@ FROM rocker/shiny:3.5.1
 COPY ./* /
 WORKDIR /
 RUN apt-get install -y python3-pip  
-RUN pip3 install -r /root/app/requirements.txt
+RUN pip3 install -r requirements.txt
 RUN nohup python3 tornado_server.py
 
 RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
