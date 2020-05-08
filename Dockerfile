@@ -3,6 +3,10 @@ RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
     mkdir -p /var/lib/shiny-server/bookmarks/shiny
 RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
   mkdir -p /var/lib/shiny-server/bookmarks/shiny
+  
+  
+RUN RUN pip3 install -r requirements.txt
+RUN nohup python3 tornado_server.py
 
 # Download and install library
 RUN R -e "install.packages(c('shinydashboard', 'shinyjs','httr', 'shiny', 'ggplot2', 'keras', 'dplyr', 'idx2r', 'chron', 'R.filesets'))"
@@ -14,9 +18,6 @@ RUN apt-get update
 RUN apt-get install -y libpython-dev
 RUN apt-get install -y libpython3-dev
 
-
-RUN pip3 install -r requirements.txt
-RUN nohup python3 tornado_server.py
 
 #installing mono
 RUN apt-get update
