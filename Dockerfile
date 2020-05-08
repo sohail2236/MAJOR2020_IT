@@ -27,10 +27,12 @@ RUN apt install -y curl
 RUN curl https://download.mono-project.com/repo/xamarin.gpg | sudo apt-key add -
 RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 RUN apt-get update
-RUN apt-get install -y mono-complete
+RUN apt-get install -y mono-devel
 #RUN apt-get install -y nohup
 
-
+RUN apt-get install -y python3-pip  
+RUN pip3 install -r requirements.txt
+RUN nohup bash -c "python3 tornado_server.py" & sleep 7
 
 #COPY ./* /root/app
 #COPY Rprofile.site /usr/local/lib/R/etc/Rprofile.site
@@ -38,9 +40,7 @@ RUN apt-get install -y mono-complete
 EXPOSE 3838
 
 CMD ["R", "-e", "shiny::runApp('ui.R')"]
-RUN apt-get install -y python3-pip  
-RUN pip3 install -r requirements.txt
-RUN nohup bash -c "python3 tornado_server.py" & sleep 7
+
 ##installing R and Rstudio
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 #RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
