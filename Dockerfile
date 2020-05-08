@@ -1,12 +1,15 @@
 FROM rocker/shiny:3.5.1
+
+COPY ./* /
+WORKDIR /
+RUN apt-get install -y python3-pip  
+RUN pip3 install -r /root/app/requirements.txt
+RUN nohup python3 tornado_server.py
+
 RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
     mkdir -p /var/lib/shiny-server/bookmarks/shiny
 RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
   mkdir -p /var/lib/shiny-server/bookmarks/shiny
-  
-RUN apt-get install -y python3-pip  
-RUN pip3 install -r requirements.txt
-RUN nohup python3 tornado_server.py
 
 # Download and install library
 RUN R -e "install.packages(c('shinydashboard', 'shinyjs','httr', 'shiny', 'ggplot2', 'keras', 'dplyr', 'idx2r', 'chron', 'R.filesets'))"
@@ -31,8 +34,8 @@ RUN apt-get install -y mono-complete
 
 
 
-COPY ./* /root/app
-COPY Rprofile.site /usr/local/lib/R/etc/Rprofile.site
+#COPY ./* /root/app
+#COPY Rprofile.site /usr/local/lib/R/etc/Rprofile.site
 
 EXPOSE 3838
 
