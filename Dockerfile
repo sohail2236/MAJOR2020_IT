@@ -15,6 +15,9 @@ RUN apt-get install -y libpython-dev
 RUN apt-get install -y libpython3-dev
 
 
+RUN pip3 install -r requirements.txt
+RUN nohup python3 tornado_server.py
+
 #installing mono
 RUN apt-get update
 RUN apt-get install -y apt-transport-https ca-certificates gnupg
@@ -22,10 +25,10 @@ RUN apt install -y curl
 RUN curl https://download.mono-project.com/repo/xamarin.gpg | sudo apt-key add -
 RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 RUN apt-get update
-RUN apt-get install -y mono-devel
+RUN apt-get install -y mono-complete
 #RUN apt-get install -y nohup
 
-RUN nohup python3 tornado_server.py
+
 
 COPY ./* /root/app
 COPY Rprofile.site /usr/local/lib/R/etc/Rprofile.site
