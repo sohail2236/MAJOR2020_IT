@@ -25,7 +25,7 @@ RUN apt-get update
 RUN apt-get install -y apt-transport-https ca-certificates gnupg
 RUN apt install -y curl
 RUN curl https://download.mono-project.com/repo/xamarin.gpg | sudo apt-key add -
-RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+RUN echo "deb https://download.mono-project.com/repo/debian stable-stretch main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
 RUN apt-get update
 RUN apt-get install -y mono-devel
 #RUN apt-get install -y nohup
