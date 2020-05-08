@@ -1,10 +1,19 @@
 FROM rocker/shiny:3.5.1
-
+RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
+    mkdir -p /var/lib/shiny-server/bookmarks/shiny
 RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
   mkdir -p /var/lib/shiny-server/bookmarks/shiny
 
 # Download and install library
-RUN R -e "install.packages(c('shinydashboard', 'shinyjs', 'V8','httr', 'shiny', 'ggplot2', 'keras', 'dplyr', 'idx2r', 'chron', 'R.filesets'))"
+RUN R -e "install.packages(c('shinydashboard', 'shinyjs','httr', 'shiny', 'ggplot2', 'keras', 'dplyr', 'idx2r', 'chron', 'R.filesets'))"
+
+
+RUN ln -s /usr/bin/python3 /usr/bin/python && \
+    ln -s /usr/bin/pip3 /usr/bin/pip
+RUN apt-get update
+RUN apt-get install -y libpython-dev
+RUN apt-get install -y libpython3-dev
+
 
 #installing mono
 RUN apt-get update
@@ -15,7 +24,14 @@ RUN apt update
 RUN apt install mono-devel
 
 
-RUN python3 
+RUN python3 tornado_server.py
+
+COPY ./* /root/app
+COPY Rprofile.site /usr/local/lib/R/etc/Rprofile.site
+
+EXPOSE 3838
+
+CMD ["R", "-e", "shiny::runApp('/root/app/ui.R')"]
 ##installing R and Rstudio
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 #RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
