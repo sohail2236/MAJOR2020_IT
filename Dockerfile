@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
   mkdir -p /var/lib/shiny-server/bookmarks/shiny
   
   
-RUN RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
 RUN nohup python3 tornado_server.py
 
 # Download and install library
