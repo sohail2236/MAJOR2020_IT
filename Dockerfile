@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install libcurl4-openssl-dev libv8-3.14-dev -y &&\
   mkdir -p /var/lib/shiny-server/bookmarks/shiny
 
 # Download and install library
-RUN R -e "install.packages(c('shinydashboard', 'shinyjs', 'V8','httr', 'shiny', ))"
+RUN R -e "install.packages(c('shinydashboard', 'shinyjs', 'V8','httr', 'shiny', 'ggplot2', 'keras', 'dplyr', 'idx2r', 'chron', 'R.filesets'))"
 
 #installing mono
 RUN apt-get update
@@ -14,9 +14,11 @@ RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" 
 RUN apt update
 RUN apt install mono-devel
 
-#installing R and Rstudio
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-RUN apt update
-RUN apt install -y r-base
-RUN apt install gdebi-core
+
+RUN python3 
+##installing R and Rstudio
+#RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+#RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+#RUN apt update
+#RUN apt install -y r-base
+#RUN apt install gdebi-core
