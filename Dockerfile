@@ -16,6 +16,7 @@ RUN apt-get update
 RUN apt-get install -y libpython-dev
 RUN apt-get install -y libpython3-dev
 RUN apt-get install -y openssl
+RUN apt-get install libssl-dev/unstable
 
 # Download and install library
 RUN R -e "install.packages(c('shinydashboard', 'shinyjs','httr', 'shiny', 'ggplot2', 'keras', 'dplyr', 'idx2r', 'chron', 'R.filesets'))"
