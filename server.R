@@ -17,6 +17,7 @@ library(idx2r)
 library(chron)
 library(httr)
 options(shiny.maxRequestSize=10000*1024^2)
+options(shiny.port = 3838)
 
 class_array_enc=c('Chat','Email','File','P2p','Streaming','Voip','Vpn_Chat','Vpn_Email','Vpn_File','Vpn_P2p','Vpn_Streaming','Vpn_Voip')
 
