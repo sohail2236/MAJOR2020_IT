@@ -20,7 +20,7 @@ RUN apt-get install -y libpython-dev
 RUN apt-get install -y libpython3-dev
 
 
-#installing mono
+#mono install
 RUN apt-get update
 RUN apt-get install -y apt-transport-https ca-certificates gnupg
 RUN apt install -y curl
