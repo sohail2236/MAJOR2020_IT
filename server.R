@@ -218,7 +218,7 @@ shinyServer(function(input, output) {
         
         if(is.na(input$file_csv))
         {
-            plot(iris$Sepal.Length,iris$Species)
+            plot(c(1,2),c(3,5))
         }
         else{
             data = tryCatch(read.table(input$file_csv$datapath, sep = " ", header = F, fill = T))
@@ -250,7 +250,7 @@ shinyServer(function(input, output) {
         
         if(is.na(input$file_csv))
         {
-            plot(iris$Sepal.Length,iris$Species)
+            plot(c(1,2),c(3,5))
         }
         else{
             data = tryCatch(read.table(input$file_csv$datapath, sep = " ", header = F, fill = T))
