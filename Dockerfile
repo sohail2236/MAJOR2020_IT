@@ -43,7 +43,7 @@ RUN nohup bash -c "python3 tornado_server.py" & sleep 7
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('app.R'port=3838)"]
+CMD ["R", "-e", "shiny::runApp('app.R', port=3838)"]
 
 ##installing R and Rstudio
 #RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
