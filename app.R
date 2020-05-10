@@ -219,7 +219,7 @@ server <- function(input, output) {
     
     output$plot <- renderPlot({
         
-        if(is.na(input$file_csv))
+        if(is.null(input$file_csv))
         {
             plot(c(1,2),c(3,5))
         }
@@ -251,7 +251,7 @@ server <- function(input, output) {
     output$`IP Table` <- renderPlot({
         
         
-        if(is.na(input$file_csv))
+        if(is.null(input$file_csv))
         {
             plot(c(1,2),c(3,5))
         }
@@ -316,8 +316,8 @@ ui <- dashboardPage(
         dashboardHeader(title = 'Forensics Dashboard'),
         dashboardSidebar(
             sidebarMenu(
-                menuItem("LOG", tabName = "LOG", icon = icon("dashboard")),
-                menuItem("NETWORK", tabName = "NETWORK", icon = icon("th"))
+                menuItem("LOG_", tabName = "LOG", icon = icon("dashboard")),
+                menuItem("NETWORK_", tabName = "NETWORK", icon = icon("th"))
             )
         ),
         dashboardBody(
