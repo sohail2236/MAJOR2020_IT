@@ -20,6 +20,8 @@ library(shinydashboard)
 library(shiny)
 options(shiny.maxRequestSize=10000*1024^2)
 options(shiny.port = 3838)
+options(shiny.host = '0.0.0.0')
+options(shiny.autoreload = TRUE)
 
 class_array_enc=c('Chat','Email','File','P2p','Streaming','Voip','Vpn_Chat','Vpn_Email','Vpn_File','Vpn_P2p','Vpn_Streaming','Vpn_Voip')
 
